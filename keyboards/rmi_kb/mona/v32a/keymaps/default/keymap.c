@@ -32,3 +32,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______,                            _______,                            _______, _______, _______, _______
     )
 };
+
+void keyboard_pre_init_user(void) {
+    setPinOutput(C1);  // initialize B1 for LED
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    if (state !=0){
+        writePinHigh(C1);
+    }else{
+        writePinLow(C1);
+    }
+    return state;
+}
